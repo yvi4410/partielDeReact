@@ -1,9 +1,7 @@
-import "./styles/global.css";
 import { useEffect, useState } from "react";
-import { getTrendingMovies } from "./api/tmdb.js";
-import MovieList from "./components/MovieList";
-import Banner from "./components/Banner";
-
+import { getTrendingMovies } from "../api/tmdb";
+import MovieList from "../components/MovieList";
+import Banner from "../components/Banner";
 
 function Home() {
     const [trending, setTrending] = useState([]);
