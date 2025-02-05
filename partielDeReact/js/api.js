@@ -1,6 +1,6 @@
 export default class API {
   constructor() {
-    this.KEY_API = "7c51ce5f51b2a0e2bb3bf45b2afaa9ae";
+    this.KEY_API = "82a4b8a952e82748e2bb3eb4c3c1da59";
   }
 
   /**
