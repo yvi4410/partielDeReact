@@ -16,6 +16,7 @@ function Home() {
             <Banner />
             <SearchBar onSearch={setMovies} />
             <MovieList title="Films Tendance" movies={movies} />
+
         </div>
     );
 }
