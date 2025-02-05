@@ -10,7 +10,6 @@ function App() {
     return (
         <div>
             <Navbar />
-            <h1 style={{ textAlign: "center", marginTop: "50px" }}>Bienvenue sur la plateforme vidéo !</h1>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/movie/:id" element={<MovieDetail />} />
