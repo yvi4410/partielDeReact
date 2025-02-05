@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import { getTrendingMovies } from "../api/tmdb";
 import MovieList from "../components/MovieList";
 import Banner from "../components/Banner";
+import SearchBar from "../components/SearchBar";
 
 function Home() {
-    const [trending, setTrending] = useState([]);
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        getTrendingMovies().then(setTrending);
+        getTrendingMovies().then(setMovies);
     }, []);
 
     return (
         <div>
             <Banner />
-            <MovieList title="Films Tendance" movies={trending} />
+            <SearchBar onSearch={setMovies} />
+            <MovieList title="Films Tendance" movies={movies} />
         </div>
     );
 }

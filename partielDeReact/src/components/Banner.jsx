@@ -3,13 +3,24 @@ import { getTrendingMovies } from "../api/tmdb";
 
 function Banner() {
     const [movie, setMovie] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        getTrendingMovies().then((movies) => {
-            setMovie(movies[0]); // Premier film tendance
-        });
+        getTrendingMovies()
+            .then((movies) => {
+                if (movies.length > 0) {
+                    setMovie(movies[0]); // Prend le premier film tendance
+                } else {
+                    setError("Aucun film trouvé.");
+                }
+            })
+            .catch((err) => {
+                console.error("Erreur API :", err);
+                setError("Impossible de charger les films.");
+            });
     }, []);
 
+    if (error) return <p style={{ color: "red" }}>{error}</p>;
     if (!movie) return <p>Chargement...</p>;
 
     return (
@@ -17,12 +28,12 @@ function Banner() {
             className="banner"
             style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
+                height: "300px", // Taille ajustée selon ton design
+                backgroundSize: "cover",
+                backgroundPosition: "center",
             }}
         >
-            <div className="banner-content">
-                <h1>{movie.title}</h1>
-                <p>{movie.overview.substring(0, 150)}...</p>
-            </div>
+            <div className="banner"></div>
         </div>
     );
 }

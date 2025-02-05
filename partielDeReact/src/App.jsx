@@ -1,23 +1,24 @@
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import MovieDetail from "./pages/MovieDetail";
+import NotFound from "./pages/NotFound";
 import "./styles/global.css";
-import { useEffect, useState } from "react";
-import { getTrendingMovies } from "./api/tmdb.js";
-import MovieList from "./components/MovieList";
-import Banner from "./components/Banner";
 
-
-function Home() {
-    const [trending, setTrending] = useState([]);
-
-    useEffect(() => {
-        getTrendingMovies().then(setTrending);
-    }, []);
-
+function App() {
     return (
         <div>
-            <Banner />
-            <MovieList title="Films Tendance" movies={trending} />
+            <Navbar />
+            <h1 style={{ textAlign: "center", marginTop: "50px" }}>Bienvenue sur la plateforme vidéo !</h1>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/movie/:id" element={<MovieDetail />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
         </div>
     );
 }
 
-export default Home;
+export default App;
